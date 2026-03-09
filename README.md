@@ -104,12 +104,14 @@ make init PROJECT=my_project DESCRIPTION="My cool project" PYTHON=3.12 LICENSE=M
 | `{license}` | The license type for your project | `MIT` |
 | `{python_version}` | Your target Python version | `3.12` |
 
-### 3. 🚀 Install & Verify
-Now, you're ready to start engineering:
-```bash
-make install
-make check
-```
+### 3. 🛠️ Development Workflow
+Once initialized, use the following commands to maintain your enterprise-grade harness:
+
+- **`make install`**: Setup your local environment and pre-commit hooks.
+- **`make run`**: Start the project application.
+- **`make check`**: Run all quality gates (Lint, Type, Security, Test).
+- **`make test`**: Execute the test suite with coverage reports.
+- **`make docs-serve`**: Preview your automated documentation.
 
 # 🏗️ Architecture & Design Rationale
 
@@ -155,6 +157,7 @@ In this harness, every command is a verification step. We don't just "run code";
 |---------|---------------|
 | `make init` | Standardizes the local environment for both Humans and Agents. |
 | `make install` | Guarantees a reproducible dev environment with enforced Git Hooks. |
+| `make run` | Start the project application. |
 | `make check` | **The Master Gate.** Runs linting, formatting, type-checking, security scans, and tests in one go. |
 | `make format` | Delegates the "style vibe" to Ruff, ensuring 100% consistent code layout. |
 | `make type-check` | Enforces `strict` Mypy rules to catch logic errors before they become bugs. |

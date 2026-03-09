@@ -1,4 +1,4 @@
-.PHONY: help init install update check format lint type-check test security-check docs-serve docs-build pre-commit build clean
+.PHONY: help init install update check format lint type-check test security-check docs-serve docs-build pre-commit build clean run
 
 # Default target
 help:
@@ -7,6 +7,7 @@ help:
 	@echo "  install        - Install dependencies using uv and setup pre-commit"
 	@echo "  update         - Update dependencies using uv"
 	@echo "  check          - Run all checks (format, lint, type-check, test, security-check)"
+	@echo "  run            - Run the project application"
 	@echo "  build          - Build the package"
 	@echo "  format         - Format code using ruff"
 	@echo "  lint           - Lint code using ruff"
@@ -99,6 +100,14 @@ commit-check:
 security-check:
 	$(call skip_if_template,security-check,uv run bandit -r src/)
 
+# Check for debug statements
+debug-check:
+	$(call skip_if_template,debug-check,uv run pre-commit run debug-statements --all-files)
+
+# Run the project application
+run:
+	$(call skip_if_template,run,uv run {project})
+
 # Serve documentation locally
 docs-serve:
 	uv run --with-groups docs mkdocs serve
@@ -108,7 +117,7 @@ docs-build:
 	uv run --with-groups docs mkdocs build
 
 # Run all checks (format, lint, type-check, test, security-check)
-check: format lint type-check security-check test
+check: format lint type-check security-check debug-check test
 
 # Build the package
 build:

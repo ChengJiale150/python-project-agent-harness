@@ -62,6 +62,16 @@ def setup_project():
                 for key, value in replacements.items():
                     new_content = new_content.replace(key, value)
 
+                # Special case for Makefile: set IS_TEMPLATE to false
+                if path.name == "Makefile":
+                    lines = []
+                    for line in new_content.splitlines():
+                        if "IS_TEMPLATE =" in line:
+                            lines.append("IS_TEMPLATE = 0")
+                        else:
+                            lines.append(line)
+                    new_content = "\n".join(lines) + ("\n" if new_content.endswith("\n") else "")
+
                 if new_content != content:
                     path.write_text(new_content, encoding="utf-8")
                     print(f"  ✅ Updated: {path.relative_to(root_dir)}")

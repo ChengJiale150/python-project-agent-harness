@@ -106,12 +106,14 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 | `{license}` | 项目的协议类型 | `MIT` |
 | `{python_version}` | 目标 Python 版本 | `3.12` |
 
-### 3. 🚀 安装与验证
-现在，你已经准备好开始工程化开发了：
-```bash
-make install
-make check
-```
+### 3. 🛠️ 开发工作流
+初始化完成后，使用以下命令维护你的企业级 Harness：
+
+- **`make install`**: 设置本地环境和 Pre-commit 钩子。
+- **`make run`**: 启动项目应用程序。
+- **`make check`**: 运行所有质量门禁（Lint、类型、安全、测试）。
+- **`make test`**: 执行测试套件并生成覆盖率报告。
+- **`make docs-serve`**: 预览自动化生成的文档。
 
 # 🏗️ 架构与设计理由
 
@@ -157,6 +159,7 @@ make check
 |---------|---------------|
 | `make init` | 为人类和 Agent 标准化本地环境。 |
 | `make install` | 保证一个带有强制 Git Hook 的可复现开发环境。 |
+| `make run` | 启动项目应用程序。 |
 | `make check` | **主门禁**。一键运行 Lint、格式化、类型检查、安全扫描和测试。 |
 | `make format` | 将“风格偏好”交给 Ruff，确保 100% 一致的代码布局。 |
 | `make type-check` | 强制执行 `strict` Mypy 规则，在逻辑错误变成 Bug 之前捕获它们。 |
