@@ -1,25 +1,46 @@
-from fastapi import FastAPI
 import uvicorn
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(
-    title="{project}",
-    description="{description}",
-    version="0.1.0",
-)
+from {project}.api.v1.router import api_router
+from {project}.core.config import settings
 
-@app.get("/")
-async def root() -> dict[str, str]:
-    """Root endpoint for the API."""
-    return {"message": "Hello from {project}!"}
 
-@app.get("/health")
-async def health() -> dict[str, str]:
-    """Health check endpoint."""
-    return {"status": "ok"}
+def create_app() -> FastAPI:
+    """Create and configure the FastAPI application."""
+    application = FastAPI(
+        title=settings.PROJECT_NAME,
+        version=settings.VERSION,
+        openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    )
+
+    # Set all CORS enabled origins
+    application.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    # Include API routers
+    application.include_router(api_router, prefix=settings.API_V1_STR)
+
+    return application
+
+
+app = create_app()
+
 
 def main() -> None:
     """Entry point for the project."""
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(
+        "{project}.main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=settings.DEBUG,
+    )
+
 
 if __name__ == "__main__":
     main()
