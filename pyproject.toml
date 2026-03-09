@@ -64,6 +64,18 @@ convention = "google"
     "D103", # Missing docstring in public function
     "ANN",  # Missing type annotations
 ]
+"scripts/*.py" = [
+    "T201", # Allow print in scripts
+    "ANN",  # Allow missing annotations in scripts
+    "D",    # Allow missing docstrings in scripts
+    "C901", # Allow complex setup script
+    "PTH",  # Allow os.path in setup script for compatibility
+    "BLE",  # Allow blind exception in setup script
+    "RUF001", # Allow ambiguous characters in setup script (emojis)
+]
+"src/**/main.py" = [
+    "T201", # Allow print in main entry point
+]
 
 [tool.ruff.format]
 quote-style = "double"
@@ -79,9 +91,11 @@ warn_unused_ignores = true
 
 [[tool.mypy.overrides]]
 module = "tests.*"
-allow_untyped_defs = true
-allow_untyped_calls = true
-disallow_untyped_decorators = false
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+warn_return_any = false
+warn_unused_ignores = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
