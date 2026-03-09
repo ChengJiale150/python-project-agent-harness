@@ -49,13 +49,15 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 
 **Stop Vibe Coding. Start Engineering with Agents.** 💎
 
-## ✨ Key Advantages: Why This Harness?
+## ✨ Key Advantages: FastAPI Native Adaptation
 
-- **🚀 Elevate AI Code Quality**: By enforcing uncompromising linting and typing rules, we force Coding Agents to generate production-ready code. No more "lazy" AI implementation; only clean, robust, and PEP-compliant code.
-- **📚 Code as Documentation (The Ultimate Context)**: Standardized Google-style docstrings and strict typing transform your codebase into the **best possible context** for LLMs. High-quality code documentation leads to a virtuous cycle of higher-quality AI code generation.
-- **🤝 Native Multi-Agent Collaboration**: Designed based on enterprise team standards, this harness provides the perfect framework for multiple Agents to work together. Clear boundaries, standardized interfaces, and unified commit conventions prevent "Agent Drift" in complex projects.
-- **🔄 100% AI Loop Support**: With our rigorous automated quality gates (Ruff, Mypy, Bandit, Pytest), you can achieve a true closed-loop AI development cycle. The constraints are so tight that you can trust AI-generated features with minimal to zero manual human review.
-- **🛡️ Security & Integrity**: Integrated [Bandit](https://github.com/PyCQA/bandit) and [Gitleaks](https://github.com/gitleaks/gitleaks) act as a digital immune system, ensuring Agents never compromise your project's security or leak sensitive data.
+This edition is specifically tuned for **FastAPI** development with Agent-centric rigor:
+
+- **🚀 Type-Safe Dependency Injection**: We enforce the use of `Annotated` and `Depends` for all services. This pattern provides the clearest possible context for Agents to understand object lifecycles and dependencies.
+- **📚 Automatic Documentation (No Overhead)**: We've removed manual documentation tools (like MkDocs) in favor of FastAPI's native OpenAPI/Swagger UI. This reduces "documentation drift" and keeps the Agent focused on code.
+- **⚡ Async-First Linting**: Special Ruff rules (`ASYNC`) are enabled to prevent Agents from introducing blocking calls in asynchronous routes.
+- **🛠️ Pydantic V2 Settings**: Modern environment management using `pydantic-settings` ensures your configuration is always validated and type-safe.
+- **🤝 Standardized Layering**: A predefined directory structure (`api/`, `services/`, `models/`, `schemas/`) prevents Agents from creating a "God-file" `main.py`.
 
 ## 🎁 Using This Template: Your New Project in Minutes
 
