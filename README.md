@@ -1,12 +1,18 @@
+<div align="center">
+
 # 🛠️ python-project-agent-harness
 
 > **Taming the "Vibe Coding" Chaos with Enterprise-Grade Rigor.** 🚀
 
-English | [中文版](README_ZH.md)
+[English](./README.md) | [中文版](./README_ZH.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Checked with mypy](https://img.shields.io/badge/mypy-checked-2ca5e0.svg)](http://mypy-lang.org/)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![Gitleaks](https://img.shields.io/badge/gitleaks-protected-blueviolet.svg)](https://github.com/gitleaks/gitleaks)
+
+</div>
 
 ## 🌊 The "Vibe Coding" Trap
 
@@ -24,7 +30,7 @@ But then, the **"Vibe"** shifts. 📉
 
 This isn't just another Python template. It's a **Harness** inspired by real-world **Enterprise Development Workflows**. 🏢
 
-In high-performance engineering teams, we don't rely on "good vibes" to maintain quality. We rely on **uncompromising processes**. We use strict linting, mandatory typing, and automated security gates to minimize human error. 
+In high-performance engineering teams, we don't rely on "good vibes" to maintain quality. We rely on **uncompromising processes**. We use strict linting, mandatory typing, and automated security gates to minimize human error.
 
 **Our Philosophy is simple: If these rigorous processes work for humans, they are even more effective for Agents.** 🤖
 

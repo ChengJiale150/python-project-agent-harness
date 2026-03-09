@@ -1,12 +1,18 @@
+<div align="center">
+
 # 🛠️ python-project-agent-harness
 
 > **用企业级的严谨驯服“氛围感编程”（Vibe Coding）的混乱。** 🚀
 
-[English](README.md) | 中文版
+[English](./README.md) | [中文版](./README_ZH.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Checked with mypy](https://img.shields.io/badge/mypy-checked-2ca5e0.svg)](http://mypy-lang.org/)
+[![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
+[![Gitleaks](https://img.shields.io/badge/gitleaks-protected-blueviolet.svg)](https://github.com/gitleaks/gitleaks)
+
+</div>
 
 ## 🌊 “氛围感编程”（Vibe Coding）的陷阱
 
