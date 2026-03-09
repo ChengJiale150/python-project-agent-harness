@@ -1,4 +1,4 @@
-.PHONY: help init install update check format lint type-check test security-check docs-serve docs-build pre-commit build clean run
+.PHONY: help init install update check format lint type-check test security-check pre-commit build clean run
 
 # Default target
 help:
@@ -15,8 +15,6 @@ help:
 	@echo "  security-check - Run security checks using bandit"
 	@echo "  test           - Run tests using pytest"
 	@echo "  commit-check   - Run commit message check using gitlint"
-	@echo "  docs-serve     - Serve documentation locally"
-	@echo "  docs-build     - Build documentation"
 	@echo "  pre-commit     - Run pre-commit on all files"
 	@echo "  clean          - Remove temporary files and caches"
 
@@ -107,14 +105,6 @@ debug-check:
 # Run the FastAPI server
 run:
 	$(call skip_if_template,run,uv run {project})
-
-# Serve documentation locally
-docs-serve:
-	uv run --with-groups docs mkdocs serve
-
-# Build documentation
-docs-build:
-	uv run --with-groups docs mkdocs build
 
 # Run all checks (format, lint, type-check, test, security-check)
 check: format lint type-check security-check test

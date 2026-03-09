@@ -112,7 +112,6 @@ Once initialized, use the following commands to maintain your enterprise-grade h
 - **`make run`**: Start the FastAPI development server.
 - **`make check`**: Run all quality gates (Lint, Type, Security, Test).
 - **`make test`**: Execute the test suite with coverage reports.
-- **`make docs-serve`**: Preview your automated documentation.
 
 ---
 

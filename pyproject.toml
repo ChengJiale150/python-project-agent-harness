@@ -30,15 +30,6 @@ dev = [
     "httpx",
 ]
 
-[project.optional-dependencies]
-docs = [
-    "mkdocs-material>=9.5.0",
-    "mkdocstrings[python]>=0.24.0",
-    "mkdocs-gen-files>=0.5.0",
-    "mkdocs-literate-nav>=0.6.1",
-    "mkdocs-section-index>=0.3.8",
-]
-
 [tool.hatch.version]
 path = "src/{project}/__init__.py"
 
@@ -123,3 +114,12 @@ disallow_incomplete_defs = false
 check_untyped_defs = false
 warn_return_any = false
 warn_unused_ignores = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra -q --cov=src --cov-report=term-missing"
+markers = [
+    "e2e: End-to-end tests",
+    "unit: Unit tests",
+]

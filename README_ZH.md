@@ -114,7 +114,6 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 - **`make run`**: 启动 FastAPI 开发服务器。
 - **`make check`**: 运行所有质量门禁（Lint、类型、安全、测试）。
 - **`make test`**: 执行测试套件并生成覆盖率报告。
-- **`make docs-serve`**: 预览自动化生成的文档。
 
 ---
 
