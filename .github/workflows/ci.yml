@@ -19,6 +19,15 @@ jobs:
           enable-cache: true
           version: "latest"
 
+      - name: Detect Template and Mock Initialization
+        run: |
+          if [ -d "src/{project}" ]; then
+            echo "Template detected. Mocking initialization for CI..."
+            make init PROJECT=harness_test DESCRIPTION="CI Test Run" PYTHON=3.12 LICENSE=MIT
+          else
+            echo "Project already initialized. Skipping mock initialization."
+          fi
+
       - name: Install dependencies
         run: make install
 
