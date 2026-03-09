@@ -63,29 +63,41 @@ update:
 	uv lock --upgrade
 	uv sync
 
+# Internal helper to check if the project is still a template
+IS_TEMPLATE = $(shell [ -d "src/{project}" ] && echo 1 || echo 0)
+
+# Macro to skip command if it's a template
+define skip_if_template
+	@if [ "$(IS_TEMPLATE)" = "1" ]; then \
+		echo "Template state detected. Skipping $(1)..."; \
+	else \
+		$(2); \
+	fi
+endef
+
 # Format code using ruff
 format:
-	uv run ruff format .
+	$(call skip_if_template,format,uv run ruff format .)
 
 # Lint code using ruff
 lint:
-	uv run ruff check . --fix
+	$(call skip_if_template,lint,uv run ruff check . --fix)
 
 # Type check code using mypy
 type-check:
-	uv run mypy src tests
+	$(call skip_if_template,type-check,uv run mypy src tests)
 
 # Run tests using pytest
 test:
-	uv run pytest
+	$(call skip_if_template,test,uv run pytest)
 
 # Run commit message check using gitlint
 commit-check:
-	uv run gitlint
+	$(call skip_if_template,commit-check,uv run gitlint)
 
 # Run security checks using bandit
 security-check:
-	uv run bandit -r src/
+	$(call skip_if_template,security-check,uv run bandit -r src/)
 
 # Serve documentation locally
 docs-serve:
