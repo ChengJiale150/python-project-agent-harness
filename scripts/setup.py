@@ -29,7 +29,7 @@ def setup_project():
         sys.exit(1)
 
     python_version_short = python_version.replace(".", "")
-    
+
     replacements = {
         "{project}": project_name,
         "{description}": description,
@@ -43,7 +43,7 @@ def setup_project():
     exclude_files = {"setup.py", ".python-version"}
 
     root_dir = Path(__file__).parent.parent
-    
+
     # Check if project setup is actually needed
     src_placeholder = root_dir / "src" / "{project}"
     if not src_placeholder.exists() and not args.force:
@@ -61,7 +61,7 @@ def setup_project():
                 new_content = content
                 for key, value in replacements.items():
                     new_content = new_content.replace(key, value)
-                
+
                 if new_content != content:
                     path.write_text(new_content, encoding="utf-8")
                     print(f"  ✅ Updated: {path.relative_to(root_dir)}")
