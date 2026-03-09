@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🚀 python-project-agent-harness (FastAPI Edition)
+# � python-project-agent-harness (FastAPI Edition)
 
 **Harness Engineering: Taming the "Vibe Coding" Chaos with Enterprise-Grade Rigor for Modern APIs.** 🌐
 <br>
@@ -49,15 +49,13 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 
 **Stop Vibe Coding. Start Engineering with Agents.** 💎
 
-## ✨ Key Advantages: FastAPI Native Adaptation
+## ✨ Key Advantages: Why This Harness?
 
-This edition is specifically tuned for **FastAPI** development with Agent-centric rigor:
-
-- **🚀 Type-Safe Dependency Injection**: We enforce the use of `Annotated` and `Depends` for all services. This pattern provides the clearest possible context for Agents to understand object lifecycles and dependencies.
-- **📚 Automatic Documentation (No Overhead)**: We've removed manual documentation tools (like MkDocs) in favor of FastAPI's native OpenAPI/Swagger UI. This reduces "documentation drift" and keeps the Agent focused on code.
-- **⚡ Async-First Linting**: Special Ruff rules (`ASYNC`) are enabled to prevent Agents from introducing blocking calls in asynchronous routes.
-- **🛠️ Pydantic V2 Settings**: Modern environment management using `pydantic-settings` ensures your configuration is always validated and type-safe.
-- **🤝 Standardized Layering**: A predefined directory structure (`api/`, `services/`, `models/`, `schemas/`) prevents Agents from creating a "God-file" `main.py`.
+- **🚀 Elevate AI Code Quality**: By enforcing uncompromising linting and typing rules, we force Coding Agents to generate production-ready code. No more "lazy" AI implementation; only clean, robust, and PEP-compliant code.
+- **📚 Code as Documentation (The Ultimate Context)**: Standardized Google-style docstrings and strict typing transform your codebase into the **best possible context** for LLMs. High-quality code documentation leads to a virtuous cycle of higher-quality AI code generation.
+- **🤝 Native Multi-Agent Collaboration**: Designed based on enterprise team standards, this harness provides the perfect framework for multiple Agents to work together. Clear boundaries, standardized interfaces, and unified commit conventions prevent "Agent Drift" in complex projects.
+- **🔄 100% AI Loop Support**: With our rigorous automated quality gates (Ruff, Mypy, Bandit, Pytest), you can achieve a true closed-loop AI development cycle. The constraints are so tight that you can trust AI-generated features with minimal to zero manual human review.
+- **🛡️ Security & Integrity**: Integrated [Bandit](https://github.com/PyCQA/bandit) and [Gitleaks](https://github.com/gitleaks/gitleaks) act as a digital immune system, ensuring Agents never compromise your project's security or leak sensitive data.
 
 ## 🎁 Using This Template: Your New Project in Minutes
 
@@ -102,11 +100,11 @@ make init PROJECT=my_project DESCRIPTION="My cool project" PYTHON=3.12 LICENSE=M
 - Update the `.python-version` file.
 
 | Placeholder | Description | Example |
-| :--- | :--- | :--- |
-| `{project}` | Your project/package name | `my_awesome_project` |
-| `{description}` | Brief project description | `A high-performance agent harness` |
-| `{license}` | Project license type | `MIT` |
-| `{python_version}` | Full Python version | `3.12` |
+|-------------|-------------|---------|
+| `{project}` | Your project/package name (lowercase, no spaces) | `my_awesome_project` |
+| `{description}` | A brief description of your project | `A high-performance data processor` |
+| `{license}` | The license type for your project | `MIT` |
+| `{python_version}` | Your target Python version | `3.12` |
 
 ### 3. 🛠️ Development Workflow
 Once initialized, use the following commands to maintain your enterprise-grade harness:
@@ -115,6 +113,47 @@ Once initialized, use the following commands to maintain your enterprise-grade h
 - **`make run`**: Start the FastAPI development server.
 - **`make check`**: Run all quality gates (Lint, Type, Security, Test).
 - **`make test`**: Execute the test suite with coverage reports.
+
+# 🏗️ Architecture & Design Rationale
+
+This project follows a "Strict-by-Design" architecture to minimize human error and AI hallucinations.
+
+### 📁 Directory Layout
+- **`src/{project}/`**: Uses the `src` layout with standardized FastAPI layers:
+    - `api/`: Route definitions and versioning.
+    - `core/`: Global configuration via `pydantic-settings`.
+    - `services/`: Business logic with Dependency Injection.
+    - `models/`: Database models.
+    - `schemas/`: Pydantic models for request/response validation.
+    - `db/`: Database session management.
+- **`tests/`**: Separated into `unit`, `e2e`, and `architecture` (using `pytest-archon`). This clear distinction helps the Agent understand the scope of testing.
+- **`docs/`**: API documentation is handled natively by FastAPI (Swagger/Redoc). Non-API docs are stored here as Markdown.
+- **`scripts/`**: A home for complex automation that goes beyond simple Makefile commands.
+
+### ⚙️ Core Configuration
+- **`pyproject.toml`**: The "Brain" of the project. It uses `hatchling` for builds and `uv` for reproducible environment management. Includes FastAPI-specific linting rules (Async, Pydantic).
+- **`.pre-commit-config.yaml`**: The "Gatekeeper". Ensures no code enters the history without being verified by our strict ruleset.
+
+## 🚀 Getting Started: The Zero-to-Hero Flow
+
+We've simplified the setup into a deterministic path. This is designed so an Agent can spin up a fully compliant environment with zero ambiguity.
+
+1. **Bootstrap the Tooling**:
+   ```bash
+   make init
+   ```
+   *Rationale: This ensures `uv` and `git` are present. It eliminates "it works on my machine" issues by standardizing the toolchain first.*
+
+2. **Sync the Environment**:
+   ```bash
+   make install
+   ```
+   *Rationale: This not only installs dependencies with lockfile precision but also sets up all Git Hooks (including commit-msg linting). It transforms a raw repo into a guarded fortress.*
+
+3. **Verify Everything**:
+   ```bash
+   make check
+   ```
 
 ---
 
