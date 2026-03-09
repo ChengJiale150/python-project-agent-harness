@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     ENVIRONMENT: str = "development"
 
     # Server configuration
-    HOST: str = "0.0.0.0"  # noqa: S104
+    HOST: str = "0.0.0.0"  # nosec B104 # noqa: S104
     PORT: int = 8000
 
     # Pydantic Settings configuration
