@@ -181,3 +181,9 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 - **原子化提交**：遵循 [约定式提交 (Conventional Commits)](https://www.conventionalcommits.org/)。这使我们能够自动化变更日志并清晰地追踪功能演进。
 - **分支策略**：使用描述性的功能分支（例如 `feat/auth-system`）。
 - **“Check”原则**：绝不推送未在本地通过 `make check` 的代码。CI 是我们最后的安全网，但质量始于本地机器。
+
+---
+
+<div align="center">
+为 AI 工程社区精心打造 ❤️
+</div>

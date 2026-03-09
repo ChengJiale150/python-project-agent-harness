@@ -179,3 +179,9 @@ To maintain the integrity of the harness, all contributions (human or AI) must a
 - **Atomic Commits**: Follow [Conventional Commits](https://www.conventionalcommits.org/). This allows us to automate changelogs and track the evolution of features clearly.
 - **Branching Strategy**: Use descriptive feature branches (e.g., `feat/auth-system`).
 - **The "Check" Rule**: Never push code that hasn't passed `make check` locally. The CI is our final safety net, but quality starts at the local machine.
+
+---
+
+<div align="center">
+Built with ❤️ for the AI Engineering Community.
+</div>
