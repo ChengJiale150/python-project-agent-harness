@@ -24,6 +24,7 @@ dev = [
     "pre-commit",
     "pytest",
     "pytest-cov",
+    "pytest-archon",
     "ruff",
     "bandit",
     "gitlint",

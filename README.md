@@ -45,6 +45,7 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 - 🧱 **Systemic Constraints**: We replace "AI drift" with a single, clear rulebook (Ruff ALL + Strict Mypy).
 - 🔒 **Automated Trust**: We don't just "hope" the code is secure; we verify it automatically with Bandit and Gitleaks.
 - 🔄 **Deterministic Verification**: We provide the Agent with a "Source of Truth" (`make check`). If the code doesn't pass the gate, it's not finished.
+- 🏗️ **Architectural Guardrails**: We use `pytest-archon` to enforce strict layering (API -> Services -> DB), ensuring the codebase remains modular and clean as it scales.
 
 **Stop Vibe Coding. Start Engineering with Agents.** 💎
 

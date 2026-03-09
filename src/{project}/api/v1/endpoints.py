@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+from {project}.services.health import HealthServiceDep
 
 router = APIRouter()
 
@@ -10,6 +11,6 @@ async def root() -> dict[str, str]:
 
 
 @router.get("/health")
-async def health_check() -> dict[str, str]:
-    """Health check endpoint."""
-    return {"status": "ok", "version": "0.1.0"}
+async def health_check(health_service: HealthServiceDep) -> dict[str, str]:
+    """Health check endpoint using HealthService."""
+    return health_service.get_status()
