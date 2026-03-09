@@ -12,7 +12,9 @@ repos:
   - id: check-case-conflict
   - id: check-merge-conflict
   - id: check-docstring-first
+    exclude: ^(src/\{project\}|tests)/.*$
   - id: debug-statements
+    exclude: ^(src/\{project\}|tests)/.*$
 
 - repo: local
   hooks:

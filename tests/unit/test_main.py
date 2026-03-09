@@ -1,10 +1,20 @@
 import pytest
-from {project}.main import hello
+from fastapi.testclient import TestClient
+from {project}.main import app
+
+client = TestClient(app)
 
 @pytest.mark.unit
-def test_hello_default():
-    assert hello() == "Hello, World!"
+def test_read_root():
+    """Test the root endpoint."""
+    response = client.get("/")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Hello from {project}!"}
 
 @pytest.mark.unit
-def test_hello_with_name():
-    assert hello("Python") == "Hello, Python!"
+def test_read_health():
+    """Test the health check endpoint."""
+    # This is a unit test for the health endpoint
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json() == {"status": "ok"}

@@ -10,7 +10,8 @@ readme = "README.md"
 requires-python = ">={python_version}"
 license = {text = "{license}"}
 dependencies = [
-  # Add project dependencies here
+  "fastapi>=0.110.0",
+  "uvicorn[standard]>=0.27.0",
 ]
 
 [project.scripts]
@@ -25,6 +26,7 @@ dev = [
     "ruff",
     "bandit",
     "gitlint",
+    "httpx",
 ]
 
 [project.optional-dependencies]
@@ -98,12 +100,3 @@ disallow_incomplete_defs = false
 check_untyped_defs = false
 warn_return_any = false
 warn_unused_ignores = false
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src"]
-addopts = "-ra -q --cov=src --cov-report=term-missing"
-markers = [
-    "e2e: End-to-end tests",
-    "unit: Unit tests",
-]

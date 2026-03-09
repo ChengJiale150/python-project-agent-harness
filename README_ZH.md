@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🛠️ python-project-agent-harness
+# 🚀 python-project-agent-harness (FastAPI 版)
 
-**Harness Engineering: 用企业级的严谨驯服“氛围感编程”（Taming the "Vibe Coding" Chaos with Enterprise-Grade Rigor）的混乱。** 🚀
+**Harness Engineering: 用企业级的严谨驯服“氛围感编程”（Taming the "Vibe Coding" Chaos with Enterprise-Grade Rigor）的混乱，为现代 API 而生。** 🌐
 <br>
 
 [![GitHub stars](https://img.shields.io/github/stars/ChengJiale150/python-project-agent-harness?style=flat-square&color=DAA520)](https://github.com/ChengJiale150/python-project-agent-harness/stargazers)
@@ -12,6 +12,7 @@
 [English](./README.md) | [中文版](./README_ZH.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 [![Checked with mypy](https://img.shields.io/badge/mypy-checked-2ca5e0.svg)](http://mypy-lang.org/)
 [![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
@@ -65,7 +66,7 @@
 > - **macOS**：确保已安装 [Homebrew](https://brew.sh/) 来管理系统包。
 > - **全平台**：系统必须安装 `make` 以支持自动化命令。
 >   - *Ubuntu/WSL*: `sudo apt install build-essential`
->   - *macOS*: `brew install make` (或使用 Xcode 命令行工具)
+>   - *macOS*: `brew install make` (or use Xcode 命令行工具)
 
 通过以下简单步骤将此 Harness 转化为你自己的项目。本项目被设计为带有待替换占位符的 **Template Repository**。
 
@@ -100,81 +101,23 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 - 更新 `.python-version` 文件。
 
 | 占位符 | 描述 | 示例 |
-|-------------|-------------|---------|
-| `{project}` | 你的项目/包名（小写，无空格） | `my_awesome_project` |
-| `{description}` | 项目的简短描述 | `一个高性能数据处理器` |
-| `{license}` | 项目的协议类型 | `MIT` |
-| `{python_version}` | 目标 Python 版本 | `3.12` |
+| :--- | :--- | :--- |
+| `{project}` | 你的项目/包名 | `my_awesome_project` |
+| `{description}` | 项目简介 | `一个高性能的 Agent Harness` |
+| `{license}` | 项目许可证 | `MIT` |
+| `{python_version}` | Python 版本 | `3.12` |
 
-### 3. 🚀 安装与验证
-现在，你已经准备好开始工程化开发了：
-```bash
-make install
-make check
-```
+### 3. 🛠️ 开发工作流
+初始化完成后，使用以下命令维护你的企业级 Harness：
 
-# 🏗️ 架构与设计理由
+- **`make install`**: 设置本地环境和 Pre-commit 钩子。
+- **`make run`**: 启动 FastAPI 开发服务器。
+- **`make check`**: 运行所有质量门禁（Lint、类型、安全、测试）。
+- **`make test`**: 执行测试套件并生成覆盖率报告。
+- **`make docs-serve`**: 预览自动化生成的文档。
 
-本项目遵循“设计即严格”的架构，以最大限度地减少人为错误和 AI 幻觉。
+---
 
-### 📁 目录布局
-- **`src/{project}/`**：采用 `src` 布局，确保只有在正确安装后包才是可导入的。这防止了本地模块的误导入，并保证你的测试运行在构建好的包上，与生产环境完全一致。
-- **`tests/`**：分为 `unit`（单元测试）和 `e2e`（端到端测试）。这种清晰的区分有助于 Agent 理解测试范围——是检查单个函数还是完整的系统流程。
-- **`docs/`**：文档即代码。通过 MkDocs，我们确保当你的 Agent 添加新功能时，它也会更新文档，保持项目知识库的生命力。
-- **`scripts/`**：用于存放超出简单 Makefile 命令的复杂自动化脚本，为 Agent 驱动的 DevOps 提供试验场。
-
-### ⚙️ 核心配置
-- **`pyproject.toml`**：项目的“大脑”。它使用 `hatchling` 进行符合标准的构建，并使用 `uv` 进行极速、可复现的环境管理。通过在这里集中所有工具配置（Ruff, Mypy, Pytest），我们给了 Agent 一个单一、清晰的规则书。
-- **`.pre-commit-config.yaml`**：项目的“守门员”。通过使用调用 Makefile 的本地 Hook，我们确保没有任何代码——无论它被“氛围感编程”得有多快——在未经验证的情况下进入 Git 历史。
-
-## 🚀 快速开始：从零到英雄
-
-我们将设置简化为一条确定性的路径。这是为了让 Agent 能够以零歧义的方式启动一个完全合规的环境。
-
-1. **引导工具链**：
-   ```bash
-   make init
-   ```
-   *设计理由：这确保了 `uv` 和 `git` 的存在。它通过首先标准化工具链来消除“在我的机器上能运行”的问题。*
-
-2. **同步环境**：
-   ```bash
-   make install
-   ```
-   *设计理由：这不仅以锁文件级别的精度安装依赖，还设置了所有的 Git Hook（包括提交信息检查）。它将一个原始仓库转化为一座设防的堡垒。*
-
-3. **验证一切**：
-   ```bash
-   make check
-   ```
-   *设计理由：Agent 应该做的第一件事就是验证基准环境是健康的。该命令会运行全套质量检查。*
-
-## 🛠️ 常用操作：自动化与验证
-
-在这个 Harness 中，每个命令都是一个验证步骤。我们不仅是“运行代码”，我们是在**验证**它。
-
-| 命令 | 存在理由 |
-|---------|---------------|
-| `make init` | 为人类和 Agent 标准化本地环境。 |
-| `make install` | 保证一个带有强制 Git Hook 的可复现开发环境。 |
-| `make check` | **主门禁**。一键运行 Lint、格式化、类型检查、安全扫描和测试。 |
-| `make format` | 将“风格偏好”交给 Ruff，确保 100% 一致的代码布局。 |
-| `make type-check` | 强制执行 `strict` Mypy 规则，在逻辑错误变成 Bug 之前捕获它们。 |
-| `make security-check` | 使用 Bandit 自动审计代码中的常见漏洞。 |
-| `make docs-serve` | 提供关于文档质量的即时反馈。 |
-| `make build` | 确保项目始终处于“可交付”状态。 |
-| `make clean` | 将工作区重置为原始状态，清理 AI 生成的工件。 |
-
-## 📜 工程标准：“游戏规则”
-
-为了保持 Harness 的完整性，所有贡献（无论是人类还是 AI）都必须遵守这些核心原则。这确保了项目保持可扩展性且不受“AI 逻辑漂移”的影响。
-
-### 🐍 卓越编码
-- **统一风格**：我们遵循由 Ruff 强制执行的 [PEP 8](https://peps.python.org/pep-0008/) 规范。无需争论，只有一致的代码。
-- **严格类型**：类型提示是强制性的。每个函数都必须通过 `strict` Mypy 检查，以防止静默的运行时失败。
-- **文档化**：我们使用 [Google 风格](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) 的文档字符串。清晰的文档是代码的一部分，而不是事后的补救。
-
-### 🤝 纪律严明的协作
-- **原子化提交**：遵循 [约定式提交 (Conventional Commits)](https://www.conventionalcommits.org/)。这使我们能够自动化变更日志并清晰地追踪功能演进。
-- **分支策略**：使用描述性的功能分支（例如 `feat/auth-system`）。
-- **“Check”原则**：绝不推送未在本地通过 `make check` 的代码。CI 是我们最后的安全网，但质量始于本地机器。
+<div align="center">
+为 AI 工程社区精心打造 ❤️
+</div>
