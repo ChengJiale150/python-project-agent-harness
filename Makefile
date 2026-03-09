@@ -13,6 +13,7 @@ help:
 	@echo "  type-check     - Type check code using mypy"
 	@echo "  security-check - Run security checks using bandit"
 	@echo "  test           - Run tests using pytest"
+	@echo "  commit-check   - Run commit message check using gitlint"
 	@echo "  docs-serve     - Serve documentation locally"
 	@echo "  docs-build     - Build documentation"
 	@echo "  pre-commit     - Run pre-commit on all files"
@@ -77,6 +78,10 @@ type-check:
 # Run tests using pytest
 test:
 	uv run pytest
+
+# Run commit message check using gitlint
+commit-check:
+	uv run gitlint
 
 # Run security checks using bandit
 security-check:
