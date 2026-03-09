@@ -1,0 +1,93 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{project}"
+dynamic = ["version"]
+description = "{description}"
+readme = "README.md"
+requires-python = ">={python_version}"
+license = {text = "{license}"}
+dependencies = [
+  # Add project dependencies here
+]
+
+[project.scripts]
+{project} = "{project}.main:main"
+
+[dependency-groups]
+dev = [
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "bandit",
+]
+
+[project.optional-dependencies]
+docs = [
+    "mkdocs-material>=9.5.0",
+    "mkdocstrings[python]>=0.24.0",
+    "mkdocs-gen-files>=0.5.0",
+    "mkdocs-literate-nav>=0.6.1",
+    "mkdocs-section-index>=0.3.8",
+]
+
+[tool.hatch.version]
+path = "src/{project}/__init__.py"
+
+[tool.ruff]
+line-length = 120
+target-version = "py{python_version_short}"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+    "D203", # 1 blank line required before class docstring
+    "D213", # Multi-line docstring summary should start at the second line
+    "COM812", # Trailing comma missing
+    "ISC001", # Implicit string concatenation
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = [
+    "S101", # Use of `assert` detected
+    "D101", # Missing docstring in public class
+    "D102", # Missing docstring in public method
+    "D103", # Missing docstring in public function
+    "ANN",  # Missing type annotations
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.mypy]
+python_version = "{python_version}"
+strict = true
+show_error_codes = true
+warn_unused_ignores = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+allow_untyped_defs = true
+allow_untyped_calls = true
+disallow_untyped_decorators = false
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra -q --cov=src --cov-report=term-missing"
+markers = [
+    "e2e: End-to-end tests",
+    "unit: Unit tests",
+]
