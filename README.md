@@ -70,10 +70,11 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 Transform this harness into your own project by following these simple steps. This project is designed as a **Template Repository** with placeholders ready for replacement.
 
 ### 1. 📂 Create Your Repository
-Click the **"Use this template"** button on GitHub to create a new repository based on this harness. Or clone it manually:
+Click the **"Use this template"** button on GitHub to create a new repository based on this harness. Or clone it manually and switch to the `fastapi` branch:
 ```bash
 git clone https://github.com/chengjiale/python-project-agent-harness.git my-awesome-project
 cd my-awesome-project
+git checkout fastapi
 ```
 
 ### 2. 📝 Configure Your Attributes
