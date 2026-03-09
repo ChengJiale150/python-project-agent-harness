@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-{project} = "{project}.main:main"
+"{project}" = "{project}.main:main"
 
 [dependency-groups]
 dev = [
