@@ -62,6 +62,6 @@ def test_no_circular_dependencies():
     (
         archrule("No circular dependencies")
         .match("{project}.*")
-        .should_not_import("{project}.*")
+        .should_not_import_itself()
         .check("{project}", skip_type_checking=True)
     )
