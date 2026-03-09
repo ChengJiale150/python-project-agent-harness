@@ -26,7 +26,7 @@ def test_db_layer_dependencies():
     """Ensure DB layer only depends on models and core."""
     (
         archrule("DB layer dependencies")
-        .match("{project}.db.*")
+        .match("{project}.db*")
         .should_not_import("{project}.api.*")
         .should_not_import("{project}.services.*")
         .check("{project}")
@@ -37,7 +37,7 @@ def test_models_layer_dependencies():
     """Ensure Models layer is independent of services and api."""
     (
         archrule("Models layer dependencies")
-        .match("{project}.models.*")
+        .match("{project}.models*")
         .should_not_import("{project}.api.*")
         .should_not_import("{project}.services.*")
         .check("{project}")
@@ -48,7 +48,7 @@ def test_core_layer_dependencies():
     """Ensure Core layer is independent of all other project layers."""
     (
         archrule("Core layer dependencies")
-        .match("{project}.core.*")
+        .match("{project}.core*")
         .should_not_import("{project}.api.*")
         .should_not_import("{project}.services.*")
         .should_not_import("{project}.db.*")
@@ -62,6 +62,6 @@ def test_no_circular_dependencies():
     (
         archrule("No circular dependencies")
         .match("{project}.*")
-        .should_not_import_itself()
+        .should_not_import("{project}.*")
         .check("{project}")
     )
