@@ -1,6 +1,6 @@
 <div align="center">
 
-# � python-project-agent-harness (FastAPI Edition)
+# 🚀 python-project-agent-harness (FastAPI Edition)
 
 **Harness Engineering: Taming the "Vibe Coding" Chaos with Enterprise-Grade Rigor for Modern APIs.** 🌐
 <br>
