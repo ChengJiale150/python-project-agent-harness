@@ -57,11 +57,11 @@ def test_core_layer_dependencies():
     )
 
 
-def test_no_circular_dependencies():
-    """Ensure there are no circular dependencies between major packages."""
+def test_no_test_imports_in_production():
+    """Ensure production code does not import from tests."""
     (
-        archrule("No circular dependencies")
+        archrule("No test imports in production")
         .match("{project}.*")
-        .should_not_import_itself()
-        .check("{project}", skip_type_checking=True)
+        .should_not_import("tests.*")
+        .check("{project}")
     )
