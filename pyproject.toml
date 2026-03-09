@@ -59,8 +59,6 @@ ignore = [
     "D213", # Multi-line docstring summary should start at the second line
     "COM812", # Trailing comma missing
     "ISC001", # Implicit string concatenation
-    "ANN101", # Missing type annotation for `self` in method
-    "ANN102", # Missing type annotation for `cls` in classmethod
 ]
 
 [tool.ruff.lint.pydocstyle]

@@ -12,6 +12,10 @@ class Settings(BaseSettings):
     DEBUG: bool = False
     ENVIRONMENT: str = "development"
 
+    # Server configuration
+    HOST: str = "0.0.0.0"  # noqa: S104
+    PORT: int = 8000
+
     # Pydantic Settings configuration
     model_config = SettingsConfigDict(
         env_file=".env",
