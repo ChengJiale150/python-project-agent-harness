@@ -12,6 +12,10 @@
 [![Security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![Gitleaks](https://img.shields.io/badge/gitleaks-protected-blueviolet.svg)](https://github.com/gitleaks/gitleaks)
 
+[![GitHub stars](https://img.shields.io/github/stars/ChengJiale150/python-project-agent-harness?style=flat-square&color=DAA520)](https://github.com/ChengJiale150/python-project-agent-harness/stargazers)
+[![GitHub watchers](https://img.shields.io/github/watchers/ChengJiale150/python-project-agent-harness?style=flat-square)](https://github.com/ChengJiale150/python-project-agent-harness/watchers)
+[![GitHub forks](https://img.shields.io/github/forks/ChengJiale150/python-project-agent-harness?style=flat-square)](https://github.com/ChengJiale150/python-project-agent-harness/network)
+
 </div>
 
 ## 🌊 The "Vibe Coding" Trap
