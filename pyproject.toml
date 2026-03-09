@@ -47,7 +47,19 @@ line-length = 120
 target-version = "py{python_version_short}"
 
 [tool.ruff.lint]
-select = ["ALL"]
+select = [
+    "ALL", # Enable all rules
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+    "ARG", # flake8-unused-arguments
+    "PT",  # flake8-pytest-style
+    "SIM", # flake8-simplify
+    "TCH", # flake8-type-checking
+    "ANN", # flake8-annotations
+    "ASYNC", # flake8-async
+]
 ignore = [
     "D100", # Missing docstring in public module
     "D104", # Missing docstring in public package
@@ -55,6 +67,8 @@ ignore = [
     "D213", # Multi-line docstring summary should start at the second line
     "COM812", # Trailing comma missing
     "ISC001", # Implicit string concatenation
+    "ANN101", # Missing type annotation for `self` in method
+    "ANN102", # Missing type annotation for `cls` in classmethod
 ]
 
 [tool.ruff.lint.pydocstyle]
@@ -93,6 +107,14 @@ python_version = "{python_version}"
 strict = true
 show_error_codes = true
 warn_unused_ignores = true
+plugins = [
+    "pydantic.mypy",
+]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
 
 [[tool.mypy.overrides]]
 module = "tests.*"
