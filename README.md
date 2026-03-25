@@ -62,10 +62,10 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 > [!IMPORTANT]
 > **Prerequisites & Environment Requirements:**
 > - **Windows**: You **must** use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) (Ubuntu recommended). This harness relies on Unix-style commands.
-> - **macOS**: Ensure [Homebrew](https://brew.sh/) is installed to manage system packages.
-> - **All Platforms**: `just` must be installed on your system to support the automation commands.
->   - *Ubuntu/WSL*: `sudo apt install build-essential`
->   - *macOS*: `brew install just` (or use Xcode Command Line Tools)
+- **macOS**: Ensure [Homebrew](https://brew.sh/) is installed to manage system packages.
+- **All Platforms**: `just` must be installed on your system to support the automation commands.
+  - *Ubuntu/WSL*: `sudo apt install just` or `curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin`
+  - *macOS*: `brew install just`
 
 Transform this harness into your own project by following these simple steps. This project is designed as a **Template Repository** with placeholders ready for replacement.
 
@@ -74,29 +74,29 @@ Click the **"Use this template"** button on GitHub to create a new repository ba
 ```bash
 git clone https://github.com/chengjiale/python-project-agent-harness.git my-awesome-project
 cd my-awesome-project
-git checkout fastapi
 ```
 
 ### 2. 📝 Configure Your Attributes
-This template uses placeholders in `{variable}` format. **GitHub does not natively support string replacement**, so we provide an automated initialization process within our `just init` command.
+This template uses placeholders in `{variable}` format. **GitHub does not natively support string replacement**, so we provide an automated initialization process using `just install` followed by the setup script.
 
 You can initialize the project in two ways:
 
 #### **Option A: Interactive (Recommended for Humans)**
-Simply run the command and follow the prompts:
+First install dependencies, then run the setup script and follow the prompts:
 ```bash
-just init
+just install
+uv run scripts/setup.py
 ```
 
 #### **Option B: Command-line Arguments (Recommended for Agents)**
 Provide all attributes directly to skip the prompts:
 ```bash
-just init PROJECT=my_project DESCRIPTION="My cool project" PYTHON=3.12 LICENSE=MIT
+just install
+uv run scripts/setup.py --project=my_project --description="My cool project" --python=3.12 --license=MIT
 ```
 
-*The `just init` command will automatically:*
-- Install `uv` and `git` if they are not already installed.
-- Trigger `scripts/setup.py` to replace all placeholders (like `python_harness`, `{description}`, etc.).
+- Check and install `uv` (if not already installed).
+- Replace all placeholders (like `python_harness`, `{description}`, etc.).
 - Rename the `src/python_harness/` directory to your actual project name.
 - Update the `.python-version` file.
 
@@ -139,17 +139,18 @@ This project follows a "Strict-by-Design" architecture to minimize human error a
 
 We've simplified the setup into a deterministic path. This is designed so an Agent can spin up a fully compliant environment with zero ambiguity.
 
-1. **Bootstrap the Tooling**:
-   ```bash
-   just init
-   ```
-   *Rationale: This ensures `uv` and `git` are present. It eliminates "it works on my machine" issues by standardizing the toolchain first.*
-
-2. **Sync the Environment**:
+1. **Install Dependencies**:
    ```bash
    just install
    ```
    *Rationale: This not only installs dependencies with lockfile precision but also sets up all Git Hooks (including commit-msg linting). It transforms a raw repo into a guarded fortress.*
+
+
+2. **Sync Environment**:
+   ```bash
+   just sync
+   ```
+   *Rationale: This synchronizes the environment after initialization changes.*
 
 3. **Verify Everything**:
    ```bash

@@ -85,19 +85,20 @@ git checkout fastapi
 你可以通过两种方式初始化项目：
 
 #### **方案 A：交互式（推荐人类使用）**
-只需运行命令并根据提示操作：
+首先安装依赖，然后运行设置脚本并按照提示操作：
 ```bash
-just init
+just install
+uv run scripts/setup.py
 ```
 
 #### **方案 B：命令行参数（推荐 Agent 使用）**
 直接提供所有属性以跳过提示：
 ```bash
-just init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENSE=MIT
+just install
+uv run scripts/setup.py --project=my_project --description="My cool project" --python=3.12 --license=MIT
 ```
 
-*`just init` 命令会自动执行：*
-- 检查并安装 `uv` 和 `git`（如果尚未安装）。
+- 检查并安装 `uv` （如果尚未安装）。
 - 触发 `scripts/setup.py` 替换所有占位符（如 `python_harness`, `{description}` 等）。
 - 将 `src/python_harness/` 目录重命名为你的实际项目名称。
 - 更新 `.python-version` 文件。
@@ -141,17 +142,17 @@ just init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 
 我们将设置简化为一条确定性的路径。这是为了让 Agent 能够以零歧义的方式启动一个完全合规的环境。
 
-1. **引导工具链**：
-   ```bash
-   just init
-   ```
-   *设计理由：这确保了 `uv` 和 `git` 的存在。它通过首先标准化工具链来消除“在我的机器上能运行”的问题。*
-
-2. **同步环境**：
+1. **安装依赖**：
    ```bash
    just install
    ```
    *设计理由：这不仅以锁文件级别的精度安装依赖，还设置了所有的 Git Hook（包括提交信息检查）。它将一个原始仓库转化为一座设防的堡垒。*
+
+2. **同步环境**：
+   ```bash
+   just sync
+   ```
+   *设计理由：这同步初始化更改后的环境。*
 
 3. **验证一切**：
    ```bash

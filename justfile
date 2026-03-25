@@ -4,7 +4,7 @@ set shell := ["bash", "-c"]
 help:
     @just --list
 
-# Install dependencies and setup environment (installs uv if missing)
+# Install dependencies and setup environment
 install:
     @echo "Checking for uv..."
     @if ! command -v uv > /dev/null; then \
@@ -17,6 +17,14 @@ install:
     uv sync
     uv run pre-commit install
     uv run pre-commit install --hook-type commit-msg
+
+# Sync environment
+sync:
+    uv sync
+
+# Run the FastAPI development server
+run port="8000":
+    uv run uvicorn python_harness.main:app --host 0.0.0.0 --port {{port}} --reload
 
 # Format code using ruff
 format:
@@ -32,7 +40,11 @@ type-check:
 
 # Run tests using pytest
 test args='':
-    uv run pytest {{args}}
+    uv run pytest {{ args }}
+
+# Run tests with coverage using pytest-cov
+cov-test args='':
+    uv run pytest --cov=src/python_harness --cov-report=term-missing {{ args }}
 
 # Check commit messages using gitlint
 commit-check msg_file:
