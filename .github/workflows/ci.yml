@@ -21,15 +21,11 @@ jobs:
 
       - name: Install just
         uses: taiki-e/install-action@just
+        with:
+          enable-cache: true
 
       - name: Install dependencies
         run: just install
 
       - name: Run checks
         run: just check
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
