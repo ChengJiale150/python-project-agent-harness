@@ -62,15 +62,15 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 > [!IMPORTANT]
 > **Prerequisites & Environment Requirements:**
 > - **Windows**: You **must** use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) (Ubuntu recommended). This harness relies on Unix-style commands.
-- **macOS**: Ensure [Homebrew](https://brew.sh/) is installed to manage system packages.
-- **All Platforms**: `just` must be installed on your system to support the automation commands.
-  - *Ubuntu/WSL*: `sudo apt install just` or `curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin`
-  - *macOS*: `brew install just`
+> - **macOS**: Ensure [Homebrew](https://brew.sh/) is installed to manage system packages.
+> - **All Platforms**: `just` must be installed on your system to support the automation commands.
+> - *Ubuntu/WSL*: `sudo apt install just` or `curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to /usr/local/bin`
+> - *macOS*: `brew install just`
 
 Transform this harness into your own project by following these simple steps. This project is designed as a **Template Repository** with placeholders ready for replacement.
 
 ### 1. 📂 Create Your Repository
-Click the **"Use this template"** button on GitHub to create a new repository based on this harness. Or clone it manually and switch to the `fastapi` branch:
+Click the **"Use this template"** button on GitHub to create a new repository based on this harness:
 ```bash
 git clone https://github.com/chengjiale/python-project-agent-harness.git my-awesome-project
 cd my-awesome-project
@@ -156,6 +156,7 @@ We've simplified the setup into a deterministic path. This is designed so an Age
    ```bash
    just check
    ```
+   *Rationale: This runs format, lint, type-check, and tests to ensure code quality and catch regressions.*
 
 ---
 

@@ -21,8 +21,6 @@ jobs:
 
       - name: Install just
         uses: taiki-e/install-action@just
-        with:
-          enable-cache: true
 
       - name: Install dependencies
         run: just install

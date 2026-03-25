@@ -72,7 +72,7 @@
 通过以下简单步骤将此 Harness 转化为你自己的项目。本项目被设计为带有待替换占位符的 **Template Repository**。
 
 ### 1. 📂 创建你的仓库
-点击 GitHub 上的 **"Use this template"** 按钮基于此 Harness 创建新仓库。或者手动克隆并切换到 `fastapi` 分支：
+点击 GitHub 上的 **"Use this template"** 按钮基于此 Harness 创建新仓库。
 ```bash
 git clone https://github.com/chengjiale/python-project-agent-harness.git my-awesome-project
 cd my-awesome-project
@@ -158,6 +158,7 @@ uv run scripts/setup.py --project=my_project --description="My cool project" --p
    ```bash
    just check
    ```
+   *设计理由：这运行格式化、lint、类型检查和测试，确保代码质量并防止回归。*
 
 ---
 

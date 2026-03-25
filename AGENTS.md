@@ -1,7 +1,6 @@
 ## Project Structure
 
 ```
-python_harness/
 ├── src/
 │   └── python_harness/      # Main source package
 │       ├── main.py          # Application entry point
