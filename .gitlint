@@ -15,7 +15,7 @@ ignore-squash-commits = true
 # target-branches = main, master
 
 [title-max-length]
-line-length = 72
+line-length = 100
 
 [title-must-not-contain-word]
 # Comma-separated list of words that should not occur in the title. Whitespace around commas is ignored.
@@ -26,4 +26,4 @@ words = wip
 regex = ^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\(\w+\))?: .+$
 
 [body-max-line-length]
-line-length = 80
+line-length = 120

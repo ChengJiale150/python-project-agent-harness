@@ -20,31 +20,31 @@ repos:
   hooks:
   - id: ruff-format
     name: ruff format
-    entry: make format
+    entry: uv run ruff format
     language: system
     types: [ python ]
     pass_filenames: false
   - id: ruff-lint
     name: ruff lint
-    entry: make lint
+    entry: uv run ruff check
     language: system
     types: [ python ]
     pass_filenames: false
   - id: mypy
     name: mypy
-    entry: make type-check
+    entry: uv run mypy .
     language: system
     types: [ python ]
     pass_filenames: false
   - id: bandit
     name: bandit
-    entry: make security-check
+    entry: uv run bandit -r src
     language: system
     types: [ python ]
     pass_filenames: false
   - id: gitlint
     name: gitlint
-    entry: make commit-check
+    entry: uv run gitlint --commits HEAD
     language: system
     stages: [ commit-msg ]
     always_run: true
