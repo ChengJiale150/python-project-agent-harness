@@ -1,6 +1,6 @@
 [general]
 # Ignore certain rules, you can find a list at http://jameslabelle.github.io/gitlint/rules/
-# ignore=title-trailing-punctuation, T3
+ignore= B6
 
 # verbosity should be a value between 0 and 3, 0 being lowest verbosity (no output), 3 being highest (debug output)
 verbosity = 2

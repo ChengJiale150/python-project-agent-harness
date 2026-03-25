@@ -1,10 +1,11 @@
 import pytest
 from fastapi import status
 from fastapi.testclient import TestClient
-from {project}.main import app
-from {project}.core.config import settings
+from python_harness.main import app
+from python_harness.core.config import settings
 
 client = TestClient(app)
+
 
 @pytest.mark.e2e
 def test_full_api_workflow():

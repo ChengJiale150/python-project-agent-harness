@@ -2,8 +2,8 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from {project}.api.v1.router import api_router
-from {project}.core.config import settings
+from python_harness.api.v1.router import api_router
+from python_harness.core.config import settings
 
 
 def create_app() -> FastAPI:
@@ -35,7 +35,7 @@ app = create_app()
 def main() -> None:
     """Entry point for the project."""
     uvicorn.run(
-        "{project}.main:app",
+        "python_harness.main:app",
         host=settings.HOST,
         port=settings.PORT,
         reload=settings.DEBUG,

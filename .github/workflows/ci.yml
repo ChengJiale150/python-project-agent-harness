@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ main, fastapi ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, fastapi ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -21,18 +21,18 @@ jobs:
 
       - name: Detect Template and Mock Initialization
         run: |
-          if [ -d "src/{project}" ]; then
+          if [ -d "src/python_harness" ]; then
             echo "Template detected. Mocking initialization for CI..."
-            make init PROJECT=harness_test DESCRIPTION="CI Test Run" PYTHON=3.12 LICENSE=MIT
+            just init PROJECT=harness_test DESCRIPTION="CI Test Run" PYTHON=3.12 LICENSE=MIT
           else
             echo "Project already initialized. Skipping mock initialization."
           fi
 
       - name: Install dependencies
-        run: make install
+        run: just install
 
       - name: Run checks
-        run: make check
+        run: just check
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4

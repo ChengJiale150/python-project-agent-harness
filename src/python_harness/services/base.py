@@ -1,4 +1,5 @@
 from typing import Annotated
+
 from fastapi import Depends
 
 
@@ -7,7 +8,6 @@ class BaseService:
 
     def __init__(self) -> None:
         """Initialize base service."""
-        pass
 
 
 def get_base_service() -> BaseService:

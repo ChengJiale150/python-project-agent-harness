@@ -44,7 +44,7 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 
 - 🧱 **Systemic Constraints**: We replace "AI drift" with a single, clear rulebook (Ruff ALL + Strict Mypy).
 - 🔒 **Automated Trust**: We don't just "hope" the code is secure; we verify it automatically with Bandit and Gitleaks.
-- 🔄 **Deterministic Verification**: We provide the Agent with a "Source of Truth" (`make check`). If the code doesn't pass the gate, it's not finished.
+- 🔄 **Deterministic Verification**: We provide the Agent with a "Source of Truth" (`just check`). If the code doesn't pass the gate, it's not finished.
 - 🏗️ **Architectural Guardrails**: We use `pytest-archon` to enforce strict layering (API -> Services -> DB), ensuring the codebase remains modular and clean as it scales.
 
 **Stop Vibe Coding. Start Engineering with Agents.** 💎
@@ -63,9 +63,9 @@ By wrapping your Agent in this enterprise-grade harness, we solve the "Vibe Codi
 > **Prerequisites & Environment Requirements:**
 > - **Windows**: You **must** use [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install) (Ubuntu recommended). This harness relies on Unix-style commands.
 > - **macOS**: Ensure [Homebrew](https://brew.sh/) is installed to manage system packages.
-> - **All Platforms**: `make` must be installed on your system to support the automation commands.
+> - **All Platforms**: `just` must be installed on your system to support the automation commands.
 >   - *Ubuntu/WSL*: `sudo apt install build-essential`
->   - *macOS*: `brew install make` (or use Xcode Command Line Tools)
+>   - *macOS*: `brew install just` (or use Xcode Command Line Tools)
 
 Transform this harness into your own project by following these simple steps. This project is designed as a **Template Repository** with placeholders ready for replacement.
 
@@ -78,31 +78,31 @@ git checkout fastapi
 ```
 
 ### 2. 📝 Configure Your Attributes
-This template uses placeholders in `{variable}` format. **GitHub does not natively support string replacement**, so we provide an automated initialization process within our `make init` command.
+This template uses placeholders in `{variable}` format. **GitHub does not natively support string replacement**, so we provide an automated initialization process within our `just init` command.
 
 You can initialize the project in two ways:
 
 #### **Option A: Interactive (Recommended for Humans)**
 Simply run the command and follow the prompts:
 ```bash
-make init
+just init
 ```
 
 #### **Option B: Command-line Arguments (Recommended for Agents)**
 Provide all attributes directly to skip the prompts:
 ```bash
-make init PROJECT=my_project DESCRIPTION="My cool project" PYTHON=3.12 LICENSE=MIT
+just init PROJECT=my_project DESCRIPTION="My cool project" PYTHON=3.12 LICENSE=MIT
 ```
 
-*The `make init` command will automatically:*
+*The `just init` command will automatically:*
 - Install `uv` and `git` if they are not already installed.
-- Trigger `scripts/setup.py` to replace all placeholders (like `{project}`, `{description}`, etc.).
-- Rename the `src/{project}/` directory to your actual project name.
+- Trigger `scripts/setup.py` to replace all placeholders (like `python_harness`, `{description}`, etc.).
+- Rename the `src/python_harness/` directory to your actual project name.
 - Update the `.python-version` file.
 
 | Placeholder | Description | Example |
 |-------------|-------------|---------|
-| `{project}` | Your project/package name (lowercase, no spaces) | `my_awesome_project` |
+| `python_harness` | Your project/package name (lowercase, no spaces) | `my_awesome_project` |
 | `{description}` | A brief description of your project | `A high-performance data processor` |
 | `{license}` | The license type for your project | `MIT` |
 | `{python_version}` | Your target Python version | `3.12` |
@@ -110,17 +110,17 @@ make init PROJECT=my_project DESCRIPTION="My cool project" PYTHON=3.12 LICENSE=M
 ### 3. 🛠️ Development Workflow
 Once initialized, use the following commands to maintain your enterprise-grade harness:
 
-- **`make install`**: Setup your local environment and pre-commit hooks.
-- **`make run`**: Start the FastAPI development server.
-- **`make check`**: Run all quality gates (Lint, Type, Security, Test).
-- **`make test`**: Execute the test suite with coverage reports.
+- **`just install`**: Setup your local environment and pre-commit hooks.
+- **`just run`**: Start the FastAPI development server.
+- **`just check`**: Run all quality gates (Lint, Type, Security, Test).
+- **`just test`**: Execute the test suite with coverage reports.
 
 # 🏗️ Architecture & Design Rationale
 
 This project follows a "Strict-by-Design" architecture to minimize human error and AI hallucinations.
 
 ### 📁 Directory Layout
-- **`src/{project}/`**: Uses the `src` layout with standardized FastAPI layers:
+- **`src/python_harness/`**: Uses the `src` layout with standardized FastAPI layers:
     - `api/`: Route definitions and versioning.
     - `core/`: Global configuration via `pydantic-settings`.
     - `services/`: Business logic with Dependency Injection.
@@ -129,7 +129,7 @@ This project follows a "Strict-by-Design" architecture to minimize human error a
     - `db/`: Database session management.
 - **`tests/`**: Separated into `unit`, `e2e`, and `architecture` (using `pytest-archon`). This clear distinction helps the Agent understand the scope of testing.
 - **`docs/`**: API documentation is handled natively by FastAPI (Swagger/Redoc). Non-API docs are stored here as Markdown.
-- **`scripts/`**: A home for complex automation that goes beyond simple Makefile commands.
+- **`scripts/`**: A home for complex automation that goes beyond simple justfile commands.
 
 ### ⚙️ Core Configuration
 - **`pyproject.toml`**: The "Brain" of the project. It uses `hatchling` for builds and `uv` for reproducible environment management. Includes FastAPI-specific linting rules (Async, Pydantic).
@@ -141,19 +141,19 @@ We've simplified the setup into a deterministic path. This is designed so an Age
 
 1. **Bootstrap the Tooling**:
    ```bash
-   make init
+   just init
    ```
    *Rationale: This ensures `uv` and `git` are present. It eliminates "it works on my machine" issues by standardizing the toolchain first.*
 
 2. **Sync the Environment**:
    ```bash
-   make install
+   just install
    ```
    *Rationale: This not only installs dependencies with lockfile precision but also sets up all Git Hooks (including commit-msg linting). It transforms a raw repo into a guarded fortress.*
 
 3. **Verify Everything**:
    ```bash
-   make check
+   just check
    ```
 
 ---

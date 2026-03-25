@@ -1,6 +1,6 @@
-# Contributing to {project}
+# Contributing to python_harness
 
-First off, thank you for considering contributing to {project}! It's people like you that make {project} such a great tool.
+First off, thank you for considering contributing to python_harness! It's people like you that make python_harness such a great tool.
 
 ## Code of Conduct
 
@@ -20,9 +20,9 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 ### Pull Requests
 
 1.  **Fork the repo** and create your branch from `main`.
-2.  **Initialize the environment**: Run `make init` and `make install`.
-3.  **Make your changes**: Ensure your code follows the [Style Guidelines](#style-guidelines).
-4.  **Run checks**: Ensure all checks pass by running `make check`.
+2.  **Initialize the environment**: Run `just init` and `just install`.
+3.  **just your changes**: Ensure your code follows the [Style Guidelines](#style-guidelines).
+4.  **Run checks**: Ensure all checks pass by running `just check`.
 5.  **Submit the PR**: Link it to any related issues and provide a clear description of the changes.
 
 ## Style Guidelines

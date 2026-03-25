@@ -1,7 +1,9 @@
 from typing import Annotated
+
 from fastapi import Depends
-from {project}.core.config import settings
-from {project}.services.base import BaseServiceDep
+
+from python_harness.core.config import settings
+from python_harness.services.base import BaseServiceDep
 
 
 class HealthService:

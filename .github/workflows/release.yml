@@ -23,7 +23,7 @@ jobs:
         run: uv python install
 
       - name: Build package
-        run: make build
+        run: just build
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

@@ -25,7 +25,7 @@ body:
     id: version
     attributes:
       label: Version
-      description: Which version of {project} are you using?
+      description: Which version of python_harness are you using?
   - type: textarea
     id: logs
     attributes:

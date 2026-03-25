@@ -46,7 +46,7 @@
 
 - 🧱 **系统性约束**：我们用统一的规则书（Ruff ALL + Strict Mypy）取代了 AI 的随机性（AI Drift）。
 - 🔒 **自动化的信任**：我们不仅“希望”代码是安全的；我们通过 Bandit 和 Gitleaks 进行自动验证。
-- 🔄 **确定性验证**：我们为 Agent 提供了唯一的“真理来源”（`make check`）。如果代码不能通过门禁，它就没有完成。
+- 🔄 **确定性验证**：我们为 Agent 提供了唯一的“真理来源”（`just check`）。如果代码不能通过门禁，它就没有完成。
 - 🏗️ **架构守卫**：引入 `pytest-archon` 强制执行严格的分层约束（API -> Services -> DB），确保代码库在规模增长时依然保持模块化与整洁。
 
 **停止氛围感编程。开始与 Agent 一起进行真正的工程化开发。** 💎
@@ -65,9 +65,9 @@
 > **前提条件与环境要求：**
 > - **Windows**：你**必须**使用 [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install)（推荐使用 Ubuntu）。该 Harness 依赖于 Unix 风格的命令。
 > - **macOS**：确保已安装 [Homebrew](https://brew.sh/) 来管理系统包。
-> - **全平台**：系统必须安装 `make` 以支持自动化命令。
+> - **全平台**：系统必须安装 `just` 以支持自动化命令。
 >   - *Ubuntu/WSL*: `sudo apt install build-essential`
->   - *macOS*: `brew install make` (or use Xcode 命令行工具)
+>   - *macOS*: `brew install just` (or use Xcode 命令行工具)
 
 通过以下简单步骤将此 Harness 转化为你自己的项目。本项目被设计为带有待替换占位符的 **Template Repository**。
 
@@ -80,31 +80,31 @@ git checkout fastapi
 ```
 
 ### 2. 📝 配置你的属性
-此模板使用 `{variable}` 格式的占位符。**GitHub 原生不支持字符串替换**，因此我们在 `make init` 命令中提供了一个自动化的初始化流程。
+此模板使用 `{variable}` 格式的占位符。**GitHub 原生不支持字符串替换**，因此我们在 `just init` 命令中提供了一个自动化的初始化流程。
 
 你可以通过两种方式初始化项目：
 
 #### **方案 A：交互式（推荐人类使用）**
 只需运行命令并根据提示操作：
 ```bash
-make init
+just init
 ```
 
 #### **方案 B：命令行参数（推荐 Agent 使用）**
 直接提供所有属性以跳过提示：
 ```bash
-make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENSE=MIT
+just init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENSE=MIT
 ```
 
-*`make init` 命令会自动执行：*
+*`just init` 命令会自动执行：*
 - 检查并安装 `uv` 和 `git`（如果尚未安装）。
-- 触发 `scripts/setup.py` 替换所有占位符（如 `{project}`, `{description}` 等）。
-- 将 `src/{project}/` 目录重命名为你的实际项目名称。
+- 触发 `scripts/setup.py` 替换所有占位符（如 `python_harness`, `{description}` 等）。
+- 将 `src/python_harness/` 目录重命名为你的实际项目名称。
 - 更新 `.python-version` 文件。
 
 | 占位符 | 描述 | 示例 |
 |-------------|-------------|---------|
-| `{project}` | 你的项目/包名（小写，无空格） | `my_awesome_project` |
+| `python_harness` | 你的项目/包名（小写，无空格） | `my_awesome_project` |
 | `{description}` | 项目简介 | `一个高性能的 Agent Harness` |
 | `{license}` | 项目许可证 | `MIT` |
 | `{python_version}` | Python 版本 | `3.12` |
@@ -112,17 +112,17 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 ### 3. 🛠️ 开发工作流
 初始化完成后，使用以下命令维护你的企业级 Harness：
 
-- **`make install`**: 设置本地环境和 Pre-commit 钩子。
-- **`make run`**: 启动 FastAPI 开发服务器。
-- **`make check`**: 运行所有质量门禁（Lint、类型、安全、测试）。
-- **`make test`**: 执行测试套件并生成覆盖率报告。
+- **`just install`**: 设置本地环境和 Pre-commit 钩子。
+- **`just run`**: 启动 FastAPI 开发服务器。
+- **`just check`**: 运行所有质量门禁（Lint、类型、安全、测试）。
+- **`just test`**: 执行测试套件并生成覆盖率报告。
 
 # 🏗️ 架构与设计理由
 
 本项目遵循“设计即严格”的架构，以最大限度地减少人为错误和 AI 幻觉。
 
 ### 📁 目录布局
-- **`src/{project}/`**：采用 `src` 布局，并集成了标准化的 FastAPI 分层：
+- **`src/python_harness/`**：采用 `src` 布局，并集成了标准化的 FastAPI 分层：
     - `api/`：路由定义与版本控制。
     - `core/`：基于 `pydantic-settings` 的全局配置。
     - `services/`：带有依赖注入的业务逻辑层。
@@ -131,7 +131,7 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
     - `db/`：数据库会话管理。
 - **`tests/`**：分为 `unit`（单元测试）、`e2e`（端到端测试）和 `architecture`（使用 `pytest-archon` 的架构测试）。这种清晰的区分有助于 Agent 理解测试范围。
 - **`docs/`**：API 文档由 FastAPI 原生处理（Swagger/Redoc）。非 API 文档以 Markdown 格式存储于此。
-- **`scripts/`**：用于存放超出简单 Makefile 命令的复杂自动化脚本。
+- **`scripts/`**：用于存放超出简单 justfile 命令的复杂自动化脚本。
 
 ### ⚙️ 核心配置
 - **`pyproject.toml`**：项目的“大脑”。它使用 `hatchling` 进行构建，并使用 `uv` 进行可复现的环境管理。包含了针对 FastAPI 的特定 Lint 规则（Async, Pydantic）。
@@ -143,19 +143,19 @@ make init PROJECT=my_project DESCRIPTION="我的超酷项目" PYTHON=3.12 LICENS
 
 1. **引导工具链**：
    ```bash
-   make init
+   just init
    ```
    *设计理由：这确保了 `uv` 和 `git` 的存在。它通过首先标准化工具链来消除“在我的机器上能运行”的问题。*
 
 2. **同步环境**：
    ```bash
-   make install
+   just install
    ```
    *设计理由：这不仅以锁文件级别的精度安装依赖，还设置了所有的 Git Hook（包括提交信息检查）。它将一个原始仓库转化为一座设防的堡垒。*
 
 3. **验证一切**：
    ```bash
-   make check
+   just check
    ```
 
 ---
