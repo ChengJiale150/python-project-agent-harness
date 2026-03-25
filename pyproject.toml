@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "python_harness"
 dynamic = ["version"]
-description = "Python project agent harness"
+description = "{description}"
 readme = "README.md"
 requires-python = ">=3.12"
 license = {text = "MIT"}
